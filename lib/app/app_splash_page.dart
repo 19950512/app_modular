@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'app_module.dart';
+
 class AppSplashPage extends StatefulWidget {
   const AppSplashPage({Key? key}) : super(key: key);
 
@@ -12,8 +14,10 @@ class _AppSplashPageState extends State<AppSplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3))
-        .then((value) => Modular.to.navigate('/product/'));
+    Future.delayed(const Duration(seconds: 3)).then((_) async {
+      await Modular.isModuleReady<AppModule>();
+      Modular.to.navigate('/product/');
+    });
   }
 
   @override
