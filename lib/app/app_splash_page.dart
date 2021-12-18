@@ -14,7 +14,7 @@ class _AppSplashPageState extends State<AppSplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3)).then((_) async {
+    Future.delayed(const Duration(seconds: 2)).then((_) async {
       await Modular.isModuleReady<AppModule>();
       Modular.to.navigate('/product/');
     });
