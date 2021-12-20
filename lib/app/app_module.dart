@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app_splash_page.dart';
+import 'modules/configurations/configurations_module.dart';
 import 'modules/product/product_module.dart';
 
 class AppModule extends Module {
@@ -16,6 +17,8 @@ class AppModule extends Module {
         ChildRoute('/', child: (context, args) => const AppSplashPage()),
         ModuleRoute('/auth', module: AuthModule()),
         ModuleRoute('/product', module: ProductModule(), guards: [AuthGuard()]),
+        ModuleRoute('/configurations',
+            module: ConfigurationsModule(), guards: [AuthGuard()]),
         WildcardRoute(
           child: (_, __) => const Scaffold(
             body: Center(
